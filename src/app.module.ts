@@ -9,7 +9,7 @@ import { DataSourceConfig } from './shared/infraestructure/persistence/dataSourc
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({...DataSourceConfig}),
+    TypeOrmModule.forRoot({ ...DataSourceConfig }),
     UsersModule,
   ],
 })

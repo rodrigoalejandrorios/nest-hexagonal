@@ -1,4 +1,5 @@
 import { NestFactory, Reflector } from '@nestjs/core';
+import * as morgan from 'morgan';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -9,6 +10,8 @@ async function bootstrap() {
     logger: ['error', 'warn'],
   });
   const configService: ConfigService = app.get(ConfigService);
+
+  app.use(morgan('dev'));
 
   //Global prefix
   app.setGlobalPrefix('api');

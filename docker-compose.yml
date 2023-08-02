@@ -1,12 +1,12 @@
 version: '3.1'
 
 services:
-  stock_now_pg:
+  hexagonal_pg:
     image: postgres:14.5
-    container_name: stock_now_db
+    container_name: hexagonal_db
     restart: always
     environment:
-      POSTGRES_DB: stocknow_db
+      POSTGRES_DB: hexagonal_db
       POSTGRES_USER: ustock
       POSTGRES_PASSWORD: Rodrig@DB_stock-now!
     volumes:
