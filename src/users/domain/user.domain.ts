@@ -1,6 +1,6 @@
 import { User } from './users.interface';
 
-export class UserDomain {
+export class UserDomain implements User {
   constructor(
     readonly fullName: string,
     readonly username: string,

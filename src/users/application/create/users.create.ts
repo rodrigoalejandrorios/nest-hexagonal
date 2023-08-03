@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UserDomain } from 'src/users/domain/user.domain';
-import { UserRepository } from 'src/users/domain/user.repository';
-import { User } from 'src/users/domain/users.interface';
+import { UserDomain } from '../../../users/domain/user.domain';
+import { UserRepository } from '../../../users/domain/user.repository';
+import { User } from '../../../users/domain/users.interface';
 
 @Injectable()
 export class UserCreate {

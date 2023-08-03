@@ -1,4 +1,4 @@
-import { BaseDTO } from 'src/shared/infraestructure/dto/base.dto';
+import { BaseDTO } from '../../../shared/infraestructure/dto/base.dto';
 import { IsNotEmpty, IsString, IsEmail } from 'class-validator';
 import { User } from 'src/users/domain/users.interface';
 

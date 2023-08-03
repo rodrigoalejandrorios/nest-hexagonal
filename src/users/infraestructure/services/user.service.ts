@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from '../persistence/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserDomain } from 'src/users/domain/user.domain';
+import * as bcrypt from 'bcrypt';
+import { UserEntity } from '../persistence/user.entity';
+import { UserDomain } from '../../../users/domain/user.domain';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,16 @@ export class UserService {
   public async create(sign: UserDomain): Promise<void> {
     try {
       const newUser = this.usersRepository.create(sign.returnValue());
+      newUser.password = await bcrypt.hash(newUser.password, 10);
       await this.usersRepository.save(newUser);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  public async findAll(): Promise<Omit<UserEntity,'password'>[]> {
+    try {
+      return await this.usersRepository.createQueryBuilder().getMany();
     } catch (error) {
       throw new Error(error);
     }
